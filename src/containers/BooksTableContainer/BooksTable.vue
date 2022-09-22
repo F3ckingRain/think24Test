@@ -38,7 +38,7 @@ function onDragStart(e: DragEvent, book: IBook) {
 .bookColumn {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(284px, 1fr));
   grid-row-gap: 12px;
   grid-column-gap: 48px;
 }
@@ -46,6 +46,5 @@ function onDragStart(e: DragEvent, book: IBook) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 </style>

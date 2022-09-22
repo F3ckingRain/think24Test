@@ -10,5 +10,4 @@ export interface ICard {
   type: boolean;
   withBook: boolean;
   bookId: number | undefined;
-  isCorrect: boolean | undefined;
 }

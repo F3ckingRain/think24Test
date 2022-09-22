@@ -14,9 +14,10 @@
         >
           <BookItem
             :book-src="props.books.find((el) => el.id === card.bookId).src"
+            :onCard="props.books.find((el) => el.id === card.bookId).onCard"
           />
         </CardWithBook>
-        <EmptyBookItem v-else :cardId="card.id" />
+        <EmptyBookItem v-else :cardId="card.id" @onDrop="onDrop" />
       </div>
     </div>
   </div>
@@ -26,7 +27,7 @@
 import EmptyBookItem from "@/components/BooksComponents/EmptyBookItem.vue";
 import { IBook, ICard } from "@/types/Interface";
 import { computed, defineProps } from "vue";
-import CardWithBook from "@/components/BooksComponents/CardWithBook.vue";
+import CardWithBook from "@/components/CardsComponents/CardWithBook.vue";
 import BookItem from "@/components/BooksComponents/BookItem.vue";
 import { useStore } from "vuex";
 interface Props {
@@ -36,6 +37,22 @@ interface Props {
 const store = useStore();
 const props = defineProps<Props>();
 const isChecked = computed(() => store.getters.getIsChecked);
+const setBook = (bookId: number) => {
+  store.commit("setBook", { id: bookId, onCard: true });
+};
+const setCardWithBook = (bookId: number, cardId: number) => {
+  store.commit("setCardWithBook", {
+    id: cardId,
+    book: true,
+    bookId: bookId,
+  });
+};
+function onDrop(e: DragEvent, id: number) {
+  if (!e.dataTransfer) return;
+  const bookId = Number(e.dataTransfer.getData("bookId"));
+  setBook(bookId);
+  setCardWithBook(bookId, id);
+}
 </script>
 
 <style lang="scss">

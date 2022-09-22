@@ -4,39 +4,25 @@
     @dragenter.prevent="toggleActive"
     @dragleave.prevent="toggleActive"
     @dragover.prevent
-    @drop.prevent="onDrop($event, props.cardId)"
+    @drop.prevent="onDropHandler($event, props.cardId)"
     :class="{ 'active-dropzone': active }"
   ></div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from "vue";
-import { useStore } from "vuex";
+import { defineEmits, defineProps, ref } from "vue";
 interface Props {
   cardId: number;
 }
 const props = defineProps<Props>();
 const active = ref(false);
-const store = useStore();
-const setBook = (bookId: number) => {
-  store.commit("setBook", { id: bookId, onCard: true });
-};
-const setCardWithBook = (bookId: number, cardId: number) => {
-  store.commit("setCardWithBook", {
-    id: cardId,
-    book: true,
-    bookId: bookId,
-  });
-};
+const emits = defineEmits(["onDrop"]);
 function toggleActive() {
   active.value = !active.value;
 }
-function onDrop(e: DragEvent, id: number) {
+function onDropHandler(e: DragEvent, id: number) {
   toggleActive();
-  if (!e.dataTransfer) return;
-  const bookId = Number(e.dataTransfer.getData("bookId"));
-  setBook(bookId);
-  setCardWithBook(bookId, id);
+  emits("onDrop", e, id);
 }
 </script>
 
