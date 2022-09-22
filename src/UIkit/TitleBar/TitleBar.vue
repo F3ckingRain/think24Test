@@ -1,17 +1,17 @@
 <template>
-  <div class="titleBar">
-    <div class="content" @click="$emit('navigate')">
-      <button class="content__navBtn">
-        <img class="btnImage" src="@/assets/images/Navig.svg" alt="" />
+  <div :class="$style.titleBar">
+    <div :class="$style.content" @click="$emit('navigate')">
+      <button :class="$style.content__navBtn">
+        <img :class="$style.btnImage" src="@/assets/images/Navig.svg" alt="" />
       </button>
-      <div class="content__navText">Назад</div>
+      <div :class="$style.content__navText">Назад</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style lang="scss">
+<style lang="scss" module>
 .titleBar {
   top: 0;
   left: 0;

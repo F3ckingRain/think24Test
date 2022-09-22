@@ -1,10 +1,10 @@
 <template>
-  <div class="booksTable">
-    <div class="bookColumn">
+  <div :class="$style.booksTable">
+    <div :class="$style.bookColumn">
       <div
         v-for="(book, index) in props.activeBooks"
         :key="`${book}_${index}`"
-        class="book"
+        :class="$style.book"
         :draggable="!props.isChecked ? 'true' : 'false'"
         @dragstart="onDragStart($event, book)"
       >
@@ -31,7 +31,7 @@ function onDragStart(e: DragEvent, book: IBook) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .booksTable {
   width: 50%;
 }

@@ -1,11 +1,10 @@
 <template>
   <div
-    class="emptyCard"
+    :class="[$style.emptyCard, active ? $style.activeDropzone : '']"
     @dragenter.prevent="toggleActive"
     @dragleave.prevent="toggleActive"
     @dragover.prevent
     @drop.prevent="onDropHandler($event, props.cardId)"
-    :class="{ 'active-dropzone': active }"
   ></div>
 </template>
 
@@ -26,8 +25,8 @@ function onDropHandler(e: DragEvent, id: number) {
 }
 </script>
 
-<style lang="scss">
-.active-dropzone {
+<style lang="scss" module>
+.activeDropzone {
   background-color: #817d7d !important;
   animation: show 0.5s ease-in-out;
 }

@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
-    <div class="homePage">
-      <div class="homeWrapper">
-        <div class="homeWrapper__header">В мире книг</div>
-        <div class="homeWrapper__instruction">
-          <div class="instruction__title">Инструкция</div>
-          <div class="instruction__content">
+  <div :class="$style.home">
+    <div :class="$style.homePage">
+      <div :class="$style.homeWrapper">
+        <div :class="$style.homeWrapper__header">В мире книг</div>
+        <div :class="$style.homeWrapper__instruction">
+          <div :class="$style.instruction__title">Инструкция</div>
+          <div :class="$style.instruction__content">
             Распредели книги, ориентируясь на названия, по соответствующим
             рубрикам таблицы: "Жарны фольклора", "Не являются жанрами фольклора"
           </div>
@@ -23,7 +23,7 @@ const navigate = () => {
   router.push("/about");
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 .home {
   padding: 0;
   margin: 0;

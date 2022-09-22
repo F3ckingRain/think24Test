@@ -1,10 +1,10 @@
 <template>
-  <div class="page">
+  <div :class="$style.page">
     <TitleBar @navigate="navigate" />
-    <div class="about">
-      <div class="title">В мире книг</div>
+    <div :class="$style.about">
+      <div :class="$style.title">В мире книг</div>
       <TableContainer :books="books" :cards="cards" :isChecked="isChecked" />
-      <div class="checkBtn">
+      <div :class="$style.checkBtn">
         <CustomButton
           text="Проверить"
           v-if="!isChecked"
@@ -40,7 +40,7 @@ const navigate = () => {
   router.push("/");
 };
 </script>
-<style lang="scss">
+<style lang="scss" module>
 .page {
   padding: 0 260px 260px;
   background-color: #ecf6e9;

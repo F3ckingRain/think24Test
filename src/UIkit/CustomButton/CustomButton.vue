@@ -1,5 +1,5 @@
 <template>
-  <button class="customBtn" @click="$emit('clickHandler')">
+  <button :class="$style.customBtn" @click="$emit('clickHandler')">
     {{ props.text }}
   </button>
 </template>
@@ -12,7 +12,7 @@ interface Props {
 const props = defineProps<Props>();
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .customBtn {
   width: fit-content;
   padding: 12px 52px;

@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
-    <div class="handler" :class="onCard ? 'dropped' : 'drag'"></div>
-    <div class="bookContainer">
+  <div :class="$style.wrapper">
+    <div :class="[$style.handler, onCard ? $style.dropped : $style.drag]"></div>
+    <div :class="$style.bookContainer">
       <img :src="props.bookSrc" alt="" draggable="false" />
     </div>
   </div>
@@ -17,7 +17,7 @@ interface Props {
 const props = defineProps<Props>();
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .wrapper {
   padding: 24px 12px;
   display: flex;
@@ -43,8 +43,5 @@ const props = defineProps<Props>();
   &:hover {
     background: url("@/assets/images/Icon - Drag - Hov.svg") no-repeat;
   }
-}
-.drag-wrapper {
-  background: red;
 }
 </style>

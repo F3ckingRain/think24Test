@@ -1,10 +1,10 @@
 <template>
-  <div class="tableContainer">
-    <div class="header">
-      <div class="header__title">Жанры фольклора</div>
-      <div class="header__title">Не являются жанрами фольклора</div>
+  <div :class="$style.tableContainer">
+    <div :class="$style.header">
+      <div :class="$style.header__title">Жанры фольклора</div>
+      <div :class="$style.header__title">Не являются жанрами фольклора</div>
     </div>
-    <div class="tableWrapper">
+    <div :class="$style.tableWrapper">
       <BooksTable
         :active-books="props.books.filter((el) => !el.onCard)"
         :is-checked="props.isChecked"
@@ -27,7 +27,7 @@ interface Props {
 const props = defineProps<Props>();
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .tableContainer {
   display: flex;
   flex-direction: column;

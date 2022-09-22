@@ -1,10 +1,10 @@
 <template>
-  <div class="cardContainer">
-    <div class="cardTable">
+  <div :class="$style.cardContainer">
+    <div :class="$style.cardTable">
       <div
         v-for="(card, index) in props.cards"
         :key="`${card}_${index}`"
-        class="cardItem"
+        :class="$style.cardItem"
       >
         <CardWithBook
           v-if="card.withBook"
@@ -55,7 +55,7 @@ function onDrop(e: DragEvent, id: number) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .cardContainer {
   width: 50%;
 }

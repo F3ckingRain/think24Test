@@ -1,7 +1,9 @@
 <template>
   <div
-    class="checkBox"
-    :class="isChecked && (isCorrect ? 'correct' : 'incorrect')"
+    :class="[
+      $style.checkBox,
+      isChecked && (isCorrect ? $style.correct : $style.incorrect),
+    ]"
   >
     <slot></slot>
   </div>
@@ -19,7 +21,7 @@ const props = defineProps<Props>();
 const isCorrect = props.cardType === props.bookType;
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .checkBox {
   border-left: 2px solid #0c6ed6;
   box-shadow: 0 4px 4px rgba(12, 110, 214, 0.16);
